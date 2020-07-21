@@ -15,7 +15,20 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Personal Expenses',
       theme: ThemeData(
-          primarySwatch: Colors.teal, accentColor: Colors.orangeAccent),
+          primarySwatch: Colors.teal,
+          accentColor: Colors.orangeAccent,
+          fontFamily: 'Quicksand',
+          textTheme: ThemeData.light().textTheme.copyWith(
+              title: TextStyle(
+                  fontFamily: 'OpenSans',
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold)),
+          appBarTheme: AppBarTheme(
+              textTheme: ThemeData.light().textTheme.copyWith(
+                  title: TextStyle(
+                      fontFamily: 'Quicksand',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20)))),
       home: MyHomePage(),
     );
   }
@@ -30,18 +43,18 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransactions = [
-    Transaction(
-      id: 't1',
-      title: 'SKZ Album',
-      amount: 25.49,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'SKZ Lightstick',
-      amount: 55.20,
-      date: DateTime.now(),
-    )
+    //   Transaction(
+    //     id: 't1',
+    //     title: 'SKZ Album',
+    //     amount: 25.49,
+    //     date: DateTime.now(),
+    //   ),
+    //   Transaction(
+    //     id: 't2',
+    //     title: 'SKZ Lightstick',
+    //     amount: 55.20,
+    //     date: DateTime.now(),
+    //   )
   ];
 
   void _addNewTransaction(String txTitle, double txAmount) {
@@ -69,7 +82,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Personal Expenses'),
+        title: Text(
+          'Personal Expenses',
+          style: TextStyle(fontFamily: 'OpenSans'),
+        ),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),
